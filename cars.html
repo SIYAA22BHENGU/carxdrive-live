@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Browse detailed car specifications and performance data on carXdrive."
+  >
+
+  <title>Browse Cars | carXdrive</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link
+    rel="stylesheet"
+    href="css/design-system.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body class="cars-page-body">
+
+ <header class="topbar mobile-navigation-header">
+
+  <a href="index.html" class="logo">
+    car<span class="red-x">X</span>drive
+  </a>
+
+  <button
+    type="button"
+    id="mobileMenuButton"
+    class="mobile-menu-button"
+    aria-label="Open navigation"
+    aria-controls="mainNavigation"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav
+    id="mainNavigation"
+    class="nav-links"
+    aria-label="Main navigation"
+  >
+    <a href="index.html#compare">
+      Compare
+    </a>
+
+    <a href="cars.html" class="active">
+      Cars
+    </a>
+
+    <a href="tests.html">
+      Tests
+    </a>
+
+    <a href="rankings.html">
+      Rankings
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+  </nav>
+
+</header>
+
+  <main>
+
+    <section class="cars-page">
+
+      <div class="cars-page-container">
+
+        <header class="cars-page-hero">
+          <p class="cars-page-eyebrow">
+            carXdrive database
+          </p>
+
+          <h1>
+            Explore every car.
+            <span>Discover every detail.</span>
+          </h1>
+
+          <p class="cars-page-introduction">
+            Search detailed specifications, performance figures,
+            engines, drivetrains and tested results from every car
+            currently available on carXdrive.
+          </p>
+
+          <div class="cars-page-features">
+            <span>Detailed specifications</span>
+            <span>Performance data</span>
+            <span>Tested results</span>
+          </div>
+        </header>
+
+        <section
+          class="cars-browser"
+          aria-labelledby="carsBrowserTitle"
+        >
+
+          <div class="cars-browser-heading">
+            <div>
+              <p class="cars-browser-eyebrow">
+                Vehicle directory
+              </p>
+
+              <h2 id="carsBrowserTitle">
+                Browse the database
+              </h2>
+            </div>
+
+            <p
+              class="cars-result-count"
+              id="carsResultCount"
+              aria-live="polite"
+            ></p>
+          </div>
+
+          <div class="cars-toolbar">
+
+            <div class="cars-search-wrapper">
+              <label for="carsSearch">
+                Search cars
+              </label>
+
+              <div class="cars-search-input-container">
+                <span
+                  class="cars-search-icon"
+                  aria-hidden="true"
+                >
+                  ⌕
+                </span>
+
+                <input
+                  type="search"
+                  id="carsSearch"
+                  placeholder="Search brand, model, variant or year"
+                  autocomplete="off"
+                >
+              </div>
+            </div>
+
+            <div class="brand-filter-section">
+              <p class="brand-filter-label">
+                Filter by brand
+              </p>
+
+              <div
+                class="brand-filters"
+                aria-label="Filter cars by brand"
+              >
+                <button
+                  type="button"
+                  class="brand-filter active"
+                  data-brand="all"
+                >
+                  All cars
+                </button>
+
+                <button
+                  type="button"
+                  class="brand-filter"
+                  data-brand="BMW"
+                >
+                  BMW
+                </button>
+
+                <button
+                  type="button"
+                  class="brand-filter"
+                  data-brand="Mercedes-AMG"
+                >
+                  Mercedes-AMG
+                </button>
+
+                <button
+                  type="button"
+                  class="brand-filter"
+                  data-brand="Audi"
+                >
+                  Audi
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section
+          class="cars-results-section"
+          aria-label="Cars database results"
+        >
+          <div
+            class="cars-grid"
+            id="carsGrid"
+          ></div>
+
+          <div
+            class="cars-empty-message"
+            id="carsEmptyMessage"
+          >
+            <div
+              class="cars-empty-icon"
+              aria-hidden="true"
+            >
+              ⌕
+            </div>
+
+            <h2>No cars found</h2>
+
+            <p>
+              Try searching for another brand, model,
+              variant or production year.
+            </p>
+          </div>
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+ <footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        car<span class="red-x">X</span>drive
+      </a>
+
+      <p>
+        Detailed car specifications, performance results
+        and side-by-side comparisons.
+      </p>
+    </div>
+
+    <div class="footer-navigation">
+
+      <div class="footer-column">
+        <h2>Explore</h2>
+
+        <a href="index.html#compare">Compare</a>
+        <a href="cars.html">Cars</a>
+        <a href="tests.html">Tests</a>
+        <a href="rankings.html">Rankings</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Company</h2>
+
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Legal</h2>
+
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      © 2026 carXdrive. Built for detailed car research.
+    </p>
+
+    <a href="#">
+      Back to top ↑
+    </a>
+  </div>
+</footer>
+
+<script src="data/cars.js"></script>
+<script src="js/cars-page.js"></script>
+<script src="js/navigation.js"></script>
+</body>
+</html>

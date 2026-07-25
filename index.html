@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Compare cars in extreme detail with carXdrive."
+  >
+
+  <title>Compare Cars | carXdrive</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link
+    rel="stylesheet"
+    href="css/design-system.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body class="compare-page">
+
+  <header class="topbar mobile-navigation-header">
+
+  <a href="index.html" class="logo">
+    car<span class="red-x">X</span>drive
+  </a>
+
+  <button
+    type="button"
+    id="mobileMenuButton"
+    class="mobile-menu-button"
+    aria-label="Open navigation"
+    aria-controls="mainNavigation"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav
+    id="mainNavigation"
+    class="nav-links"
+    aria-label="Main navigation"
+  >
+    <a href="index.html#compare" class="active">
+      Compare
+    </a>
+
+    <a href="cars.html">
+      Cars
+    </a>
+
+    <a href="tests.html">
+      Tests
+    </a>
+
+    <a href="rankings.html">
+      Rankings
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+  </nav>
+
+</header>
+
+  <main id="compare" class="hero compare-hero">
+
+    <div class="compare-hero-inner">
+
+      <section class="hero-heading">
+        <p class="compare-eyebrow">
+          Advanced car comparison
+        </p>
+
+        <h1>
+          Compare cars.
+          <span>Know every detail.</span>
+        </h1>
+
+        <p class="compare-introduction">
+          Compare performance, engines, drag races, braking,
+          tyres, safety, technology and much more.
+        </p>
+
+        <div class="compare-feature-list">
+          <span>18 categories</span>
+          <span>Tested performance</span>
+          <span>Side-by-side results</span>
+        </div>
+      </section>
+
+      <section
+        class="compare-workspace"
+        aria-labelledby="compareWorkspaceTitle"
+      >
+      <div class="compare-workspace-heading">
+  <p
+    class="compare-workspace-eyebrow centered-workspace-title"
+    id="compareWorkspaceTitle"
+  >
+    Start your comparison
+  </p>
+</div>
+
+        <div class="search-grid">
+
+          <!-- Car 1 -->
+          <div class="search-card">
+
+            <div class="search-card-heading">
+              <span class="search-card-number">01</span>
+
+              <div>
+                <label for="carSearch1">
+                  Car 1
+                </label>
+
+                <p>First vehicle</p>
+              </div>
+            </div>
+
+            <div class="car-search-input-wrapper">
+              <input
+                type="text"
+                id="carSearch1"
+                placeholder="Search make, model or variant"
+                autocomplete="off"
+                aria-label="Search for Car 1"
+              >
+
+              <button
+                type="button"
+                class="clear-car-button"
+                data-slot="1"
+                aria-label="Clear Car 1"
+              >
+                ×
+              </button>
+            </div>
+
+            <div
+              class="search-results"
+              id="searchResults1"
+            ></div>
+          </div>
+
+          <div class="vs-badge" aria-hidden="true">
+            VS
+          </div>
+
+          <!-- Car 2 -->
+          <div class="search-card">
+
+            <div class="search-card-heading">
+              <span class="search-card-number">02</span>
+
+              <div>
+                <label for="carSearch2">
+                  Car 2
+                </label>
+
+                <p>Second vehicle</p>
+              </div>
+            </div>
+
+            <div class="car-search-input-wrapper">
+              <input
+                type="text"
+                id="carSearch2"
+                placeholder="Search make, model or variant"
+                autocomplete="off"
+                aria-label="Search for Car 2"
+              >
+
+              <button
+                type="button"
+                class="clear-car-button"
+                data-slot="2"
+                aria-label="Clear Car 2"
+              >
+                ×
+              </button>
+            </div>
+
+            <div
+              class="search-results"
+              id="searchResults2"
+            ></div>
+          </div>
+
+          <div class="vs-badge" aria-hidden="true">
+            VS
+          </div>
+
+          <!-- Car 3 -->
+          <div class="search-card optional">
+
+            <div class="search-card-heading">
+              <span class="search-card-number">03</span>
+
+              <div>
+                <label for="carSearch3">
+                  Car 3
+                  <span>Optional</span>
+                </label>
+
+                <p>Third vehicle</p>
+              </div>
+            </div>
+
+            <div class="car-search-input-wrapper">
+              <input
+                type="text"
+                id="carSearch3"
+                placeholder="Add an optional third car"
+                autocomplete="off"
+                aria-label="Search for optional Car 3"
+              >
+
+              <button
+                type="button"
+                class="clear-car-button"
+                data-slot="3"
+                aria-label="Clear Car 3"
+              >
+                ×
+              </button>
+            </div>
+
+            <div
+              class="search-results"
+              id="searchResults3"
+            ></div>
+          </div>
+
+        </div>
+
+        <div class="compare-action-row">
+          <button
+            id="compareButton"
+            class="compare-button"
+            type="button"
+          >
+            <span>Compare cars</span>
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <p>
+            Select at least two different cars to continue.
+          </p>
+        </div>
+
+      </section>
+
+      <section
+        id="comparisonResults"
+        class="comparison-results"
+        aria-live="polite"
+      >
+
+        <div class="comparison-tabs">
+
+          <button
+            class="comparison-tab active"
+            data-category="overview"
+            type="button"
+          >
+            Overview
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="performance"
+            type="button"
+          >
+            Performance
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="engine"
+            type="button"
+          >
+            Engine
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="transmission"
+            type="button"
+          >
+            Transmission
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="drag-race"
+            type="button"
+          >
+            Drag Race
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="rolling-race"
+            type="button"
+          >
+            Rolling Race
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="tyres"
+            type="button"
+          >
+            Tyres
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="brakes"
+            type="button"
+          >
+            Brakes
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="handling"
+            type="button"
+          >
+            Handling
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="weight"
+            type="button"
+          >
+            Weight
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="dimensions"
+            type="button"
+          >
+            Dimensions
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="aerodynamics"
+            type="button"
+          >
+            Aerodynamics
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="fuel"
+            type="button"
+          >
+            Fuel
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="exhaust"
+            type="button"
+          >
+            Exhaust
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="interior"
+            type="button"
+          >
+            Interior
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="technology"
+            type="button"
+          >
+            Technology
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="safety"
+            type="button"
+          >
+            Safety
+          </button>
+
+          <button
+            class="comparison-tab"
+            data-category="test-results"
+            type="button"
+          >
+            Test Results
+          </button>
+
+        </div>
+
+        <div id="comparisonContent"></div>
+
+      </section>
+
+    </div>
+
+  </main>
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        car<span class="red-x">X</span>drive
+      </a>
+
+      <p>
+        Detailed car specifications, performance results
+        and side-by-side comparisons.
+      </p>
+    </div>
+
+    <div class="footer-navigation">
+
+      <div class="footer-column">
+        <h2>Explore</h2>
+
+        <a href="index.html#compare">Compare</a>
+        <a href="cars.html">Cars</a>
+        <a href="tests.html">Tests</a>
+        <a href="rankings.html">Rankings</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Company</h2>
+
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Legal</h2>
+
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      © 2026 carXdrive. Built for detailed car research.
+    </p>
+
+    <a href="#">
+      Back to top ↑
+    </a>
+  </div>
+</footer>
+
+ <script src="data/cars.js"></script>
+<script src="js/script.js"></script>
+<script src="js/navigation.js"></script>
+</body>
+</html>

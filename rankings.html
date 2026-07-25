@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Discover the fastest, most powerful and most efficient cars in the carXdrive database."
+  >
+
+  <title>Car Rankings | carXdrive</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link
+    rel="stylesheet"
+    href="css/design-system.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body class="rankings-page-body">
+
+ <header class="topbar mobile-navigation-header">
+
+  <a href="index.html" class="logo">
+    car<span class="red-x">X</span>drive
+  </a>
+
+  <button
+    type="button"
+    id="mobileMenuButton"
+    class="mobile-menu-button"
+    aria-label="Open navigation"
+    aria-controls="mainNavigation"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav
+    id="mainNavigation"
+    class="nav-links"
+    aria-label="Main navigation"
+  >
+    <a href="index.html#compare">
+      Compare
+    </a>
+
+    <a href="cars.html">
+      Cars
+    </a>
+
+    <a href="tests.html">
+      Tests
+    </a>
+
+    <a href="rankings.html" class="active">
+      Rankings
+    </a>
+
+    <a href="about.html">
+      About
+    </a>
+  </nav>
+
+</header>
+
+  <main class="rankings-page">
+
+    <section class="rankings-hero">
+      <div class="rankings-container">
+
+        <p class="rankings-eyebrow">
+          Data-driven results
+        </p>
+
+        <h1>
+          See which cars
+          <span>lead the rankings.</span>
+        </h1>
+
+        <p class="rankings-introduction">
+          Rank every eligible car by power, acceleration,
+          top speed, fuel economy, weight or torque using
+          data from the carXdrive database.
+        </p>
+
+        <div class="rankings-feature-list">
+          <span>Automatic sorting</span>
+          <span>Multiple categories</span>
+          <span>Live database results</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="rankings-content">
+      <div class="rankings-container">
+
+        <section
+          class="rankings-browser"
+          aria-labelledby="rankingsBrowserTitle"
+        >
+
+          <div class="rankings-browser-heading">
+
+            <div>
+              <p class="rankings-browser-eyebrow">
+                Leaderboard controls
+              </p>
+
+              <h2 id="rankingsBrowserTitle">
+                Find and rank cars
+              </h2>
+            </div>
+
+            <p
+              id="rankingResultCount"
+              class="ranking-result-count"
+              aria-live="polite"
+            >
+              0 cars ranked
+            </p>
+
+          </div>
+
+          <div class="rankings-toolbar">
+
+            <div class="rankings-search-wrapper">
+              <label for="rankingsSearch">
+                Search rankings
+              </label>
+
+              <div class="rankings-search-input-container">
+                <span
+                  class="rankings-search-icon"
+                  aria-hidden="true"
+                >
+                  ⌕
+                </span>
+
+                <input
+                  type="search"
+                  id="rankingsSearch"
+                  placeholder="Search brand, model, variant or year"
+                  autocomplete="off"
+                >
+              </div>
+            </div>
+
+            <div class="rankings-filter-wrapper">
+              <label for="rankingCategory">
+                Ranking category
+              </label>
+
+              <div class="ranking-select-container">
+                <select id="rankingCategory">
+                  <option value="power">
+                    Most Powerful
+                  </option>
+
+                  <option value="acceleration">
+                    Fastest 0–100 km/h
+                  </option>
+
+                  <option value="topSpeed">
+                    Highest Top Speed
+                  </option>
+
+                  <option value="fuelEconomy">
+                    Best Fuel Economy
+                  </option>
+
+                  <option value="lightest">
+                    Lightest Cars
+                  </option>
+
+                  <option value="torque">
+                    Most Torque
+                  </option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section
+          class="rankings-results-section"
+          aria-labelledby="rankingTitle"
+        >
+
+          <div class="rankings-heading-row">
+            <div>
+              <p class="rankings-small-title">
+                Current category
+              </p>
+
+              <h2 id="rankingTitle">
+                Most Powerful Cars
+              </h2>
+            </div>
+          </div>
+
+          <div
+            id="rankingsList"
+            class="rankings-list"
+          >
+            <!-- Ranking rows are generated by JavaScript -->
+          </div>
+
+          <div
+            id="rankingsEmptyMessage"
+            class="rankings-empty-message"
+          >
+            <div
+              class="rankings-empty-icon"
+              aria-hidden="true"
+            >
+              ⌕
+            </div>
+
+            <h2>No ranking results found</h2>
+
+            <p>
+              Try another search term or choose a
+              different ranking category.
+            </p>
+          </div>
+
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+ <footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        car<span class="red-x">X</span>drive
+      </a>
+
+      <p>
+        Detailed car specifications, performance results
+        and side-by-side comparisons.
+      </p>
+    </div>
+
+    <div class="footer-navigation">
+
+      <div class="footer-column">
+        <h2>Explore</h2>
+
+        <a href="index.html#compare">Compare</a>
+        <a href="cars.html">Cars</a>
+        <a href="tests.html">Tests</a>
+        <a href="rankings.html">Rankings</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Company</h2>
+
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Legal</h2>
+
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      © 2026 carXdrive. Built for detailed car research.
+    </p>
+
+    <a href="#">
+      Back to top ↑
+    </a>
+  </div>
+</footer>
+
+<script src="data/cars.js"></script>
+<script src="js/rankings-page.js"></script>
+<script src="js/navigation.js"></script>
+
+</body>
+</html>
