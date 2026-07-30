@@ -918,6 +918,89 @@ function buildSpecificationRows(
     .join("");
 }
 
+
+function buildMobileComparisonCards(
+  specifications,
+  carsToCompare
+) {
+  return specifications
+    .map(function (specification) {
+      const numericValues = carsToCompare
+        .map(function (car) {
+          return car?.[specification.key];
+        })
+        .filter(function (value) {
+          return (
+            typeof value === "number" &&
+            Number.isFinite(value)
+          );
+        });
+
+      let winningValue = null;
+
+      if (
+        specification.winner === "highest" &&
+        numericValues.length > 0
+      ) {
+        winningValue = Math.max(...numericValues);
+      }
+
+      if (
+        specification.winner === "lowest" &&
+        numericValues.length > 0
+      ) {
+        winningValue = Math.min(...numericValues);
+      }
+
+      const carRows = carsToCompare
+        .map(function (car, index) {
+          const value = car?.[specification.key];
+          const isWinner =
+            winningValue !== null &&
+            typeof value === "number" &&
+            Number.isFinite(value) &&
+            value === winningValue;
+
+          return `
+            <div class="mobile-comparison-car-row ${
+              isWinner ? "mobile-comparison-winner" : ""
+            }">
+              <div class="mobile-comparison-car-name">
+                <span>Car ${index + 1}</span>
+                <strong>${car.brand} ${car.model}</strong>
+                <small>${[car.generation, car.variant, car.year]
+                  .filter(Boolean)
+                  .join(" · ")}</small>
+              </div>
+
+              <div class="mobile-comparison-value">
+                <strong>
+                  ${formatSpecificationValue(car, specification)}
+                </strong>
+
+                ${
+                  isWinner
+                    ? `<span class="mobile-winner-badge">Winner</span>`
+                    : ""
+                }
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      return `
+        <article class="mobile-comparison-card">
+          <h3>${specification.label}</h3>
+          <div class="mobile-comparison-card-rows">
+            ${carRows}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
 function setupCarSearch(slotNumber) {
   const input = document.getElementById(
     `carSearch${slotNumber}`
@@ -1314,6 +1397,13 @@ if (!specifications) {
       .join("")}
   </div>
 
+    <div class="mobile-comparison-list" aria-label="Mobile car comparison">
+      ${buildMobileComparisonCards(
+        specifications,
+        currentCarsToCompare
+      )}
+    </div>
+
     <div class="comparison-table-wrapper">
       <table class="comparison-table">
         <thead>
@@ -1437,6 +1527,84 @@ if (
 
 }
 
+function loadSharedComparison() {
+  const params = new URLSearchParams(window.location.search);
+
+  const availableCars =
+    typeof cars !== "undefined" && Array.isArray(cars)
+      ? cars
+      : [];
+
+  if (availableCars.length === 0) {
+    return;
+  }
+
+  const sharedCarIds = [
+    params.get("car1"),
+    params.get("car2"),
+    params.get("car3")
+  ];
+
+  let loadedCarCount = 0;
+
+  sharedCarIds.forEach(function (carId, index) {
+    if (!carId) {
+      return;
+    }
+
+    const matchedCar = availableCars.find(function (car) {
+      return String(car.id) === String(carId);
+    });
+
+    if (!matchedCar) {
+      return;
+    }
+
+    selectedCars[index] = matchedCar;
+
+    const input = document.getElementById(`carSearch${index + 1}`);
+
+    if (input) {
+      input.value = [
+        matchedCar.brand,
+        matchedCar.model,
+        matchedCar.variant
+      ]
+        .filter(Boolean)
+        .join(" ");
+    }
+
+    updateClearButton(index + 1);
+    loadedCarCount++;
+  });
+
+  if (loadedCarCount < 2) {
+    return;
+  }
+
+  currentCarsToCompare = selectedCars.filter(function (car) {
+    return car !== null;
+  });
+
+  comparisonTabs.forEach(function (tab) {
+    tab.classList.remove("active");
+  });
+
+  const overviewTab = document.querySelector(
+    '.comparison-tab[data-category="overview"]'
+  );
+
+  if (overviewTab) {
+    overviewTab.classList.add("active");
+  }
+
+  renderComparison("overview");
+
+  if (comparisonResults) {
+    comparisonResults.classList.add("active");
+  }
+}
+
 function initializeComparePage() {
   compareButton = document.getElementById("compareButton");
   comparisonResults = document.getElementById(
@@ -1450,6 +1618,7 @@ function initializeComparePage() {
   setupCarSearch(2);
   setupCarSearch(3);
   setupClearCarButtons();
+  loadSharedComparison();
 
   if (compareButton && comparisonResults) {
     compareButton.addEventListener("click", function () {
@@ -1531,4 +1700,54 @@ if (document.readyState === "loading") {
   );
 } else {
   initializeComparePage();
+}
+const shareComparisonBtn = document.getElementById("shareComparisonBtn");
+const shareMessage = document.getElementById("shareMessage");
+
+if (shareComparisonBtn) {
+  shareComparisonBtn.addEventListener("click", async function () {
+    const selected = selectedCars.filter(Boolean);
+
+    if (selected.length < 2) {
+      shareMessage.textContent = "Please compare at least two cars first.";
+      return;
+    }
+
+    const params = new URLSearchParams();
+
+    selected.forEach((car, index) => {
+   params.set(`car${index + 1}`, car.id);
+    });
+
+    const shareUrl =
+      `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+
+    const carNames = selected.map(car => `${car.brand} ${car.model}`);
+
+    const shareText =
+      `I compared ${carNames.join(", ")} on carXdrive.`;
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "carXdrive Comparison",
+          text: shareText,
+          url: shareUrl
+        });
+
+        shareMessage.textContent = "Comparison shared successfully.";
+      } else {
+        await navigator.clipboard.writeText(
+          `${shareText} ${shareUrl}`
+        );
+
+        shareMessage.textContent = "Comparison link copied.";
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        shareMessage.textContent = "Unable to share the comparison.";
+        console.error("Share error:", error);
+      }
+    }
+  });
 }
