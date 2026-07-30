@@ -8299,4 +8299,62 @@ input::placeholder {
     min-width: 0;
   }
 }
+/* Smaller compact footer */
 
+.site-footer .footer-container {
+  padding-top: 28px;
+  padding-bottom: 22px;
+  gap: 35px;
+}
+
+.site-footer .footer-logo {
+  margin-bottom: 8px;
+  font-size: 1.7rem;
+}
+
+.site-footer .footer-brand p {
+  margin-top: 8px;
+  max-width: 390px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.site-footer .footer-navigation {
+  gap: 25px;
+}
+
+.site-footer .footer-column {
+  gap: 8px;
+}
+
+.site-footer .footer-column h2 {
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+}
+
+.site-footer .footer-column a {
+  margin-bottom: 4px;
+  font-size: 0.82rem;
+}
+
+.site-footer .footer-bottom {
+  padding: 14px 0;
+}
+
+@media (max-width: 650px) {
+  .site-footer .footer-container {
+    padding-top: 24px;
+    padding-bottom: 18px;
+    gap: 25px;
+  }
+
+  .site-footer .footer-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .site-footer .footer-bottom {
+    padding: 12px 0;
+    gap: 8px;
+  }
+}
