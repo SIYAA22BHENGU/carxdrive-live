@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://carxdrive.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/cars.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/tests.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/rankings.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/terms.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/cookies.html</loc>
+  </url>
+
+  <url>
+    <loc>https://carxdrive.vercel.app/disclaimer.html</loc>
+  </url>
+
+</urlset>
