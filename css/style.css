@@ -8358,3 +8358,27 @@ input::placeholder {
     gap: 8px;
   }
 }
+.adsterra-mobile-ad {
+  display: none;
+  justify-content: center;
+  margin: 20px auto;
+  min-height: 50px;
+}
+
+@media (max-width: 768px) {
+  .adsterra-mobile-ad {
+    display: flex;
+  }
+}
+.adsterra-desktop-ad {
+  display: flex;
+  justify-content: center;
+  margin: 24px auto;
+  min-height: 90px;
+}
+
+@media (max-width: 768px) {
+  .adsterra-desktop-ad {
+    display: none;
+  }
+}
