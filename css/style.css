@@ -8540,3 +8540,39 @@ input::placeholder {
     padding: 20px;
   }
 }
+@media (max-width: 650px) {
+  .site-footer .footer-container {
+    padding: 28px 20px 20px;
+  }
+
+  .site-footer .footer-brand {
+    margin-bottom: 24px;
+  }
+
+  .site-footer .footer-navigation {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+
+  .site-footer .footer-column {
+    min-width: 0;
+  }
+
+  .site-footer .footer-column h2 {
+    margin-bottom: 14px;
+    font-size: 0.78rem;
+  }
+
+  .site-footer .footer-column a {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .site-footer .footer-bottom {
+    padding: 18px 20px 24px;
+  }
+}
