@@ -237,7 +237,79 @@
           </div>
 
         </section>
+<section class="car-request-section">
+  <div class="car-request-container">
 
+    <div class="car-request-heading">
+      <p class="car-request-eyebrow">Missing a car?</p>
+      <h2>Request a Car</h2>
+      <p>
+        Tell us which vehicle you would like added to carXdrive.
+      </p>
+    </div>
+
+    <form
+      class="car-request-form"
+      action="https://formspree.io/f/mpqvvnyl"
+      method="POST"
+    >
+      <div class="car-request-field">
+        <label for="requestedCar">Car make and model</label>
+        <input
+          type="text"
+          id="requestedCar"
+          name="Car make and model"
+          placeholder="Example: BMW M3 Competition"
+          required
+        >
+      </div>
+
+      <div class="car-request-field">
+        <label for="requestedYear">Year</label>
+        <input
+          type="number"
+          id="requestedYear"
+          name="Year"
+          placeholder="Example: 2025"
+          min="1900"
+          max="2030"
+          required
+        >
+      </div>
+
+      <div class="car-request-field">
+        <label for="requesterEmail">Your email (optional)</label>
+        <input
+          type="email"
+          id="requesterEmail"
+          name="Email"
+          placeholder="name@example.com"
+        >
+      </div>
+
+      <div class="car-request-field">
+        <label for="requestDetails">Additional details (optional)</label>
+        <textarea
+          id="requestDetails"
+          name="Additional details"
+          rows="5"
+          placeholder="Include the trim, engine or transmission if needed."
+        ></textarea>
+      </div>
+
+      <input
+        type="hidden"
+        name="_subject"
+        value="New car request from carXdrive"
+      >
+
+      <button type="submit" class="car-request-button">
+        Send Request
+      </button>
+    </form>
+
+  </div>
+</section>
         <section
           class="cars-results-section"
           aria-label="Cars database results"
