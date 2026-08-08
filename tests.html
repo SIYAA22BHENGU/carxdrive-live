@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <script>
-  window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    dataLayer.push(arguments);
-  }
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-  gtag("consent", "default", {
-    ad_storage: "denied",
-    analytics_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-    wait_for_update: 500
-  });
-</script>
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500
+    });
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VBC6T963X"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -29,7 +30,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore carXdrive performance research, testing categories and real-world vehicle data including acceleration, braking, handling, fuel economy and more.">
-  <title>Car Tests & Performance Research | carXdrive</title>
+
+  <title>Car Tests &amp; Performance Research | carXdrive</title>
 
   <link rel="stylesheet" href="css/design-system.css">
   <link rel="stylesheet" href="css/style.css">
@@ -81,6 +83,14 @@
       <section class="legal-card">
         <h2>Rolling performance</h2>
         <p>Rolling acceleration helps show how strongly a car responds once it is already moving. This can be useful when comparing overtaking performance, engine flexibility, gearing and the way different powertrains deliver their output.</p>
+      </section>
+
+      <!-- BidVertiser native ad: loads only after cookie consent -->
+      <section class="cars-native-ad-section" aria-label="Sponsored content">
+        <div class="about-container">
+          <p class="about-section-eyebrow">Sponsored</p>
+          <div id="ntv_2106507"></div>
+        </div>
       </section>
 
       <section class="legal-card">
@@ -166,6 +176,7 @@
 
 <div id="cookieConsent" class="cookie-consent" role="dialog" aria-label="Cookie consent" aria-live="polite">
   <p>carXdrive uses cookies for website functionality, analytics and advertising. Read our <a href="cookies.html">Cookie Policy</a>.</p>
+
   <div class="cookie-consent-buttons">
     <button type="button" id="rejectCookies">Reject</button>
     <button type="button" id="acceptCookies">Accept</button>
@@ -173,5 +184,63 @@
 </div>
 
 <script src="js/cookie-consent.js"></script>
+
+<script>
+(function () {
+  const STORAGE_KEY = "carxdrive-cookie-consent";
+  let bidvertiserLoaded = false;
+
+  function loadBidVertiserNativeAd() {
+    if (bidvertiserLoaded) return;
+
+    const container = document.getElementById("ntv_2106507");
+    if (!container) return;
+
+    bidvertiserLoaded = true;
+
+    const params = {
+      bvwidgetid: "ntv_2106507",
+      bvlinksownid: 2106507,
+      rows: 1,
+      cols: 1,
+      textpos: "below",
+      imagewidth: 150,
+      mobilecols: 1,
+      cb: new Date().getTime()
+    };
+
+    params.bvwidgetid = "ntv_2106507" + params.cb;
+    container.id = params.bvwidgetid;
+
+    const queryString = Object.keys(params)
+      .map(function (key) {
+        return key + "=" + encodeURIComponent(params[key]);
+      })
+      .join("&");
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src =
+      "https://cdn.hyperpromote.com/bidvertiser/tags/active/bdvws.js?" +
+      queryString;
+
+    document.getElementById(params.bvwidgetid).appendChild(script);
+  }
+
+  if (localStorage.getItem(STORAGE_KEY) === "accepted") {
+    loadBidVertiserNativeAd();
+  }
+
+  const acceptButton = document.getElementById("acceptCookies");
+
+  if (acceptButton) {
+    acceptButton.addEventListener("click", function () {
+      loadBidVertiserNativeAd();
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
