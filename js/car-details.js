@@ -627,7 +627,7 @@ const specificationCategories = [
   },
 
   {
-    title: "Independent Test Results",
+    title: "Published / Reference Test Results",
     specifications: [
       {
         key: "testSource",
@@ -1177,22 +1177,129 @@ function buildEditorialInsights(car) {
   `;
 }
 
-function updateCarMetaDescription(car) {
+function setMetaContent(selector, attributeName, attributeValue, content) {
+  let element = document.querySelector(selector);
+
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(attributeName, attributeValue);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("content", content);
+}
+
+
+function updateCarSeo(car) {
+  const carName = getCarDisplayName(car) || "Car";
+  const yearPrefix = car.year ? `${car.year} ` : "";
+  const fullName = `${yearPrefix}${carName}`.trim();
+
   const description =
-    `${car.year || ""} ${getCarDisplayName(car)}: ${getAvailableValue(car.engine)}, ` +
+    `${fullName}: ${getAvailableValue(car.engine)}, ` +
     `${typeof car.powerKw === "number" ? car.powerKw + " kW" : "detailed power data"}, ` +
     `${typeof car.zeroToHundred === "number" ? "0–100 km/h in " + car.zeroToHundred + " s" : "performance data"}, ` +
     `plus specifications, safety, fuel economy and carXdrive analysis.`;
 
-  let metaDescription = document.querySelector('meta[name="description"]');
+  const pageUrl =
+    `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(car.id)}`;
 
-  if (!metaDescription) {
-    metaDescription = document.createElement("meta");
-    metaDescription.setAttribute("name", "description");
-    document.head.appendChild(metaDescription);
+  document.title =
+    `${fullName} Specifications & Review | carXdrive`;
+
+  setMetaContent(
+    'meta[name="description"]',
+    "name",
+    "description",
+    description
+  );
+
+  setMetaContent(
+    'meta[property="og:title"]',
+    "property",
+    "og:title",
+    document.title
+  );
+
+  setMetaContent(
+    'meta[property="og:description"]',
+    "property",
+    "og:description",
+    description
+  );
+
+  setMetaContent(
+    'meta[property="og:type"]',
+    "property",
+    "og:type",
+    "article"
+  );
+
+  setMetaContent(
+    'meta[property="og:url"]',
+    "property",
+    "og:url",
+    pageUrl
+  );
+
+  if (car.image) {
+    setMetaContent(
+      'meta[property="og:image"]',
+      "property",
+      "og:image",
+      new URL(car.image, window.location.origin).href
+    );
   }
 
-  metaDescription.setAttribute("content", description);
+  let canonical = document.querySelector('link[rel="canonical"]');
+
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    document.head.appendChild(canonical);
+  }
+
+  canonical.setAttribute("href", pageUrl);
+
+  const existingStructuredData =
+    document.getElementById("carStructuredData");
+
+  if (existingStructuredData) {
+    existingStructuredData.remove();
+  }
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Car",
+    "name": fullName,
+    "url": pageUrl,
+    "brand": {
+      "@type": "Brand",
+      "name": car.brand || ""
+    },
+    "model": car.model || "",
+    "vehicleModelDate": car.year ? String(car.year) : undefined,
+    "description": description
+  };
+
+  if (car.image) {
+    structuredData.image =
+      new URL(car.image, window.location.origin).href;
+  }
+
+  if (car.fuelType) {
+    structuredData.fuelType = car.fuelType;
+  }
+
+  if (car.seatCount !== undefined && car.seatCount !== null && car.seatCount !== "") {
+    structuredData.seatingCapacity = car.seatCount;
+  }
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.id = "carStructuredData";
+  script.textContent = JSON.stringify(structuredData);
+  document.head.appendChild(script);
 }
 
 
@@ -1278,10 +1385,7 @@ function loadCarDetails() {
       selectedCar.brand || "carXdrive";
   }
 
-  document.title =
-    `${carName} Specifications & Review | carXdrive`;
-
-  updateCarMetaDescription(selectedCar);
+  updateCarSeo(selectedCar);
   renderSectionNavigation(selectedCar);
   renderCarSpecifications(selectedCar);
 }

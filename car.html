@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
-    <script>
-  window.dataLayer = window.dataLayer || [];
+  <!-- Consent defaults -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    dataLayer.push(arguments);
-  }
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-  gtag("consent", "default", {
-    ad_storage: "denied",
-    analytics_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-    wait_for_update: 500
-  });
-</script>
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500
+    });
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VBC6T963X"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-0VBC6T963X');
+    gtag("js", new Date());
+    gtag("config", "G-0VBC6T963X");
   </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628231111650283"
-     crossorigin="anonymous"></script>
+
+  <!-- Google AdSense -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628231111650283"
+    crossorigin="anonymous"
+  ></script>
+
   <meta charset="UTF-8">
 
   <meta
@@ -37,73 +41,58 @@
 
   <meta
     name="description"
-    content="View detailed car specifications, performance figures and test results on carXdrive."
+    content="View detailed vehicle specifications, published performance information, dimensions, fuel economy, safety data and carXdrive research notes."
   >
 
-  <title>Car Specifications | carXdrive</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-
-  <link
-    rel="stylesheet"
-    href="css/design-system.css"
-  >
+  <title>Car Specifications &amp; Performance | carXdrive</title>
 
   <link
-    rel="stylesheet"
-    href="css/style.css"
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
   >
+
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="car-details-page-body">
 
   <header class="topbar mobile-navigation-header">
 
-  <a href="index.html" class="logo">
-    car<span class="red-x">X</span>drive
-  </a>
-
-  <button
-    type="button"
-    id="mobileMenuButton"
-    class="mobile-menu-button"
-    aria-label="Open navigation"
-    aria-controls="mainNavigation"
-    aria-expanded="false"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <nav
-    id="mainNavigation"
-    class="nav-links"
-    aria-label="Main navigation"
-  >
-    <a href="index.html#compare">
-      Compare
+    <a href="index.html" class="logo">
+      car<span class="red-x">X</span>drive
     </a>
 
-    <a href="cars.html" class="active">
-      Cars
-    </a>
+    <button
+      type="button"
+      id="mobileMenuButton"
+      class="mobile-menu-button"
+      aria-label="Open navigation"
+      aria-controls="mainNavigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-    <a href="tests.html">
-      Tests
-    </a>
+    <nav
+      id="mainNavigation"
+      class="nav-links"
+      aria-label="Main navigation"
+    >
+      <a href="index.html#compare">Compare</a>
+      <a href="cars.html" class="active">Cars</a>
+      <a href="tests.html">Tests</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="about.html">About</a>
+    </nav>
 
-    <a href="rankings.html">
-      Rankings
-    </a>
+  </header>
 
-    <a href="about.html">
-      About
-    </a>
-  </nav>
 
-</header>
-
-  <main class="car-details-page">
+  <main>
 
     <section class="car-details-content">
       <div class="car-details-container">
@@ -119,6 +108,7 @@
           id="carDetailsError"
           class="car-details-error"
           role="alert"
+          hidden
         >
           <h1>Car not found</h1>
 
@@ -136,6 +126,7 @@
 
           <aside class="car-sections-sidebar">
             <div class="car-sections-sidebar-inner">
+
               <h2>Specifications</h2>
 
               <nav
@@ -145,6 +136,7 @@
               >
                 <!-- Section links are generated by JavaScript -->
               </nav>
+
             </div>
           </aside>
 
@@ -160,91 +152,174 @@
       </div>
     </section>
 
+
+    <section class="car-details-research-guide">
+      <div class="about-container">
+
+        <p class="about-eyebrow">
+          Understanding the data
+        </p>
+
+        <h2>
+          How to use carXdrive vehicle pages
+        </h2>
+
+        <p>
+          Each vehicle page brings together structured specifications,
+          published performance information and research notes for a specific
+          model, model year and variant where that information is available.
+        </p>
+
+        <div class="legal-page-container">
+
+          <section class="legal-card">
+            <h3>Check the exact variant</h3>
+
+            <p>
+              Engines, transmissions, drivetrains, equipment and performance
+              can differ significantly between trims that share the same model
+              name. Always compare the exact variant shown on the page.
+            </p>
+          </section>
+
+          <section class="legal-card">
+            <h3>Performance figures can vary</h3>
+
+            <p>
+              Acceleration, braking, fuel economy and other performance results
+              depend on testing conditions, tyres, weather, vehicle load,
+              surface, driver technique and measurement method.
+            </p>
+          </section>
+
+          <section class="legal-card">
+            <h3>Published and reference data</h3>
+
+            <p>
+              Depending on the vehicle, carXdrive may use manufacturer
+              specifications, published road-test information or compiled
+              reference estimates. carXdrive does not claim that every listed
+              figure was measured directly by carXdrive.
+            </p>
+          </section>
+
+          <section class="legal-card">
+            <h3>Use more than one metric</h3>
+
+            <p>
+              Horsepower and acceleration are only part of the picture.
+              Weight, braking, tyres, fuel economy, practicality, safety
+              equipment and drivetrain layout can all affect how suitable
+              a vehicle is for a particular buyer.
+            </p>
+          </section>
+
+        </div>
+
+        <p>
+          Found a possible error? Visit the
+          <a href="contact.html">Contact Us</a> page and include the vehicle,
+          model year, variant, value in question and a reliable supporting source.
+        </p>
+
+      </div>
+    </section>
+
   </main>
 
- <footer class="site-footer">
-  <div class="footer-container">
 
-    <div class="footer-brand">
-      <a href="index.html" class="footer-logo">
-        car<span class="red-x">X</span>drive
-      </a>
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          car<span class="red-x">X</span>drive
+        </a>
+
+        <p>
+          Detailed car specifications, performance results
+          and side-by-side comparisons.
+        </p>
+      </div>
+
+      <div class="footer-navigation">
+
+        <div class="footer-column">
+          <h2>Explore</h2>
+
+          <a href="index.html#compare">Compare</a>
+          <a href="cars.html">Cars</a>
+          <a href="tests.html">Tests</a>
+          <a href="rankings.html">Rankings</a>
+        </div>
+
+        <div class="footer-column">
+          <h2>Company</h2>
+
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="footer-column">
+          <h2>Legal</h2>
+
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="cookies.html">Cookie Policy</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
 
       <p>
-        Detailed car specifications, performance results
-        and side-by-side comparisons.
+        © 2026 carXdrive. Built for detailed car research.
       </p>
-    </div>
 
-    <div class="footer-navigation">
-
-      <div class="footer-column">
-        <h2>Explore</h2>
-
-        <a href="index.html#compare">Compare</a>
-        <a href="cars.html">Cars</a>
-        <a href="tests.html">Tests</a>
-        <a href="rankings.html">Rankings</a>
-      </div>
-
-      <div class="footer-column">
-        <h2>Company</h2>
-
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-
-      <div class="footer-column">
-        <h2>Legal</h2>
-
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <a href="cookies.html">Cookie Policy</a>
-        <a href="disclaimer.html">Disclaimer</a>
-      </div>
+      <a href="#">
+        Back to top ↑
+      </a>
 
     </div>
 
-  </div>
-
-  <div class="footer-bottom">
-    <p>
-      © 2026 carXdrive. Built for detailed car research.
-    </p>
-
-    <a href="#">
-      Back to top ↑
-    </a>
-  </div>
-</footer>
+  </footer>
 
 
   <script src="data/cars.js"></script>
-<script src="js/car-details.js"></script>
-<script src="js/navigation.js"></script>
-<div
-  id="cookieConsent"
-  class="cookie-consent"
-  role="dialog"
-  aria-label="Cookie consent"
-  aria-live="polite"
->
-  <p>
-    carXdrive uses cookies for website functionality, analytics and advertising.
-    Read our <a href="cookies.html">Cookie Policy</a>.
-  </p>
+  <script src="js/car-details.js"></script>
+  <script src="js/navigation.js"></script>
 
-  <div class="cookie-consent-buttons">
-    <button type="button" id="rejectCookies">
-      Reject
-    </button>
 
-    <button type="button" id="acceptCookies">
-      Accept
-    </button>
+  <div
+    id="cookieConsent"
+    class="cookie-consent"
+    role="dialog"
+    aria-label="Cookie consent"
+    aria-live="polite"
+  >
+    <p>
+      carXdrive uses cookies for website functionality, analytics and advertising.
+      Read our <a href="cookies.html">Cookie Policy</a>.
+    </p>
+
+    <div class="cookie-consent-buttons">
+
+      <button type="button" id="rejectCookies">
+        Reject
+      </button>
+
+      <button type="button" id="acceptCookies">
+        Accept
+      </button>
+
+    </div>
   </div>
-</div>
 
-<script src="js/cookie-consent.js"></script>
+  <script src="js/cookie-consent.js"></script>
+
 </body>
 </html>
