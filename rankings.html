@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VBC6T963X"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-0VBC6T963X');
   </script>
 
-  
-</div>
-  <script async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628231111650283"
-  crossorigin="anonymous"></script>
+  <!-- Google AdSense -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628231111650283"
+    crossorigin="anonymous"
+  ></script>
+
   <meta charset="UTF-8">
 
   <meta
@@ -26,11 +26,16 @@
 
   <meta
     name="description"
-    content="Discover the fastest, most powerful and most efficient cars in the carXdrive database."
+    content="Discover the fastest, most powerful, lightest and most fuel-efficient cars in the carXdrive database. Explore data-driven automotive rankings and detailed vehicle comparisons."
   >
 
-  <title>Car Rankings | carXdrive</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>Car Rankings | Fastest, Most Powerful & Most Efficient | carXdrive</title>
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1119'/%3E%3Cpath d='M18 16L32 32L18 48' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M46 16L32 32L46 48' fill='none' stroke='%23ff2638' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+  >
 
   <link
     rel="stylesheet"
@@ -45,56 +50,59 @@
 
 <body class="rankings-page-body">
 
- <header class="topbar mobile-navigation-header">
+  <header class="topbar mobile-navigation-header">
 
-  <a href="index.html" class="logo">
-    car<span class="red-x">X</span>drive
-  </a>
-
-  <button
-    type="button"
-    id="mobileMenuButton"
-    class="mobile-menu-button"
-    aria-label="Open navigation"
-    aria-controls="mainNavigation"
-    aria-expanded="false"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <nav
-    id="mainNavigation"
-    class="nav-links"
-    aria-label="Main navigation"
-  >
-    <a href="index.html#compare">
-      Compare
+    <a href="index.html" class="logo">
+      car<span class="red-x">X</span>drive
     </a>
 
-    <a href="cars.html">
-      Cars
-    </a>
+    <button
+      type="button"
+      id="mobileMenuButton"
+      class="mobile-menu-button"
+      aria-label="Open navigation"
+      aria-controls="mainNavigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-    <a href="tests.html">
-      Tests
-    </a>
+    <nav
+      id="mainNavigation"
+      class="nav-links"
+      aria-label="Main navigation"
+    >
+      <a href="index.html#compare">
+        Compare
+      </a>
 
-    <a href="rankings.html" class="active">
-      Rankings
-    </a>
+      <a href="cars.html">
+        Cars
+      </a>
 
-    <a href="about.html">
-      About
-    </a>
-  </nav>
+      <a href="tests.html">
+        Tests
+      </a>
 
-</header>
+      <a href="rankings.html" class="active">
+        Rankings
+      </a>
 
-  <main class="rankings-page">
+      <a href="about.html">
+        About
+      </a>
+    </nav>
 
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
     <section class="rankings-hero">
+
       <div class="rankings-container">
 
         <p class="rankings-eyebrow">
@@ -107,8 +115,8 @@
         </h1>
 
         <p class="rankings-introduction">
-          Rank every eligible car by power, acceleration,
-          top speed, fuel economy, weight or torque using
+          Explore cars ranked by power, acceleration, top speed,
+          fuel economy, vehicle weight and torque using detailed
           data from the carXdrive database.
         </p>
 
@@ -119,9 +127,13 @@
         </div>
 
       </div>
+
     </section>
 
+
+    <!-- RANKINGS -->
     <section class="rankings-content">
+
       <div class="rankings-container">
 
         <section
@@ -132,6 +144,7 @@
           <div class="rankings-browser-heading">
 
             <div>
+
               <p class="rankings-browser-eyebrow">
                 Leaderboard controls
               </p>
@@ -139,6 +152,7 @@
               <h2 id="rankingsBrowserTitle">
                 Find and rank cars
               </h2>
+
             </div>
 
             <p
@@ -151,14 +165,17 @@
 
           </div>
 
+
           <div class="rankings-toolbar">
 
             <div class="rankings-search-wrapper">
+
               <label for="rankingsSearch">
                 Search rankings
               </label>
 
               <div class="rankings-search-input-container">
+
                 <span
                   class="rankings-search-icon"
                   aria-hidden="true"
@@ -172,16 +189,22 @@
                   placeholder="Search brand, model, variant or year"
                   autocomplete="off"
                 >
+
               </div>
+
             </div>
 
+
             <div class="rankings-filter-wrapper">
+
               <label for="rankingCategory">
                 Ranking category
               </label>
 
               <div class="ranking-select-container">
+
                 <select id="rankingCategory">
+
                   <option value="power">
                     Most Powerful
                   </option>
@@ -205,13 +228,17 @@
                   <option value="torque">
                     Most Torque
                   </option>
+
                 </select>
+
               </div>
+
             </div>
 
           </div>
 
         </section>
+
 
         <section
           class="rankings-results-section"
@@ -219,7 +246,9 @@
         >
 
           <div class="rankings-heading-row">
+
             <div>
+
               <p class="rankings-small-title">
                 Current category
               </p>
@@ -227,8 +256,11 @@
               <h2 id="rankingTitle">
                 Most Powerful Cars
               </h2>
+
             </div>
+
           </div>
+
 
           <div
             id="rankingsList"
@@ -237,10 +269,12 @@
             <!-- Ranking rows are generated by JavaScript -->
           </div>
 
+
           <div
             id="rankingsEmptyMessage"
             class="rankings-empty-message"
           >
+
             <div
               class="rankings-empty-icon"
               aria-hidden="true"
@@ -254,98 +288,435 @@
               Try another search term or choose a
               different ranking category.
             </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- PERMANENT ORIGINAL CONTENT -->
+        <section
+          class="rankings-results-section rankings-explainer"
+          aria-labelledby="rankingsExplainerTitle"
+        >
+
+          <div class="rankings-heading-row">
+
+            <div>
+
+              <p class="rankings-small-title">
+                Understanding the numbers
+              </p>
+
+              <h2 id="rankingsExplainerTitle">
+                How carXdrive rankings work
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div class="rankings-explainer-content">
+
+            <section>
+
+              <h3>How cars are ranked</h3>
+
+              <p>
+                carXdrive rankings use the vehicle information stored
+                in our database. When you choose a category, eligible
+                cars are automatically sorted using the relevant
+                specification. Vehicles without usable data for that
+                category are excluded from the leaderboard.
+              </p>
+
+              <p>
+                Rankings are designed to help identify interesting
+                vehicles quickly, but one number should never be used
+                alone when deciding which car is best.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Most powerful cars</h3>
+
+              <p>
+                The power leaderboard compares listed powertrain
+                output in kilowatts. A higher power figure can provide
+                stronger performance potential, but horsepower or
+                kilowatts alone do not determine acceleration.
+              </p>
+
+              <p>
+                Vehicle mass, traction, gearing, aerodynamics,
+                transmission speed and drivetrain layout all affect
+                how effectively a car converts engine or motor output
+                into real performance.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Fastest 0–100 km/h</h3>
+
+              <p>
+                This ranking sorts vehicles by their listed
+                0–100 km/h acceleration time. The lowest time appears
+                first.
+              </p>
+
+              <p>
+                Acceleration can change depending on tyre condition,
+                road surface, temperature, launch technique, vehicle
+                load, battery charge in electrified vehicles and the
+                testing method used.
+              </p>
+
+              <p>
+                Small differences between two cars should therefore
+                be viewed as a guide rather than a guarantee that one
+                vehicle will always be quicker.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Highest top speed</h3>
+
+              <p>
+                The top-speed ranking compares the maximum listed
+                speed of eligible vehicles.
+              </p>
+
+              <p>
+                Some cars are electronically limited, while others
+                may only achieve their highest quoted speed with an
+                optional performance package or different tyre
+                specification.
+              </p>
+
+              <p>
+                Top speed is also very different from everyday
+                acceleration. A vehicle with a lower maximum speed can
+                still accelerate more quickly at normal road speeds.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Best fuel economy</h3>
+
+              <p>
+                Fuel-economy rankings use combined fuel-consumption
+                figures where available. A lower litres-per-100-km
+                figure represents better fuel efficiency.
+              </p>
+
+              <p>
+                Real-world fuel use can differ substantially depending
+                on driving style, traffic, road conditions, vehicle
+                load, weather, tyre pressure and route.
+              </p>
+
+              <p>
+                These figures are therefore most useful for comparing
+                cars under similar conditions rather than predicting
+                an exact fuel bill.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Lightest cars</h3>
+
+              <p>
+                The weight leaderboard sorts eligible vehicles by
+                kerb weight, placing the lightest vehicles first.
+              </p>
+
+              <p>
+                Lower mass can benefit acceleration, braking,
+                cornering response and fuel efficiency, but a lighter
+                car is not automatically the better performer.
+                Suspension design, tyres, chassis balance and
+                power-to-weight ratio remain important.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Most torque</h3>
+
+              <p>
+                Torque rankings compare powertrain output measured in
+                newton-metres.
+              </p>
+
+              <p>
+                Strong torque can improve low-speed and mid-range
+                acceleration, but the amount of torque reaching the
+                wheels is also affected by gearing, transmission
+                design and drivetrain configuration.
+              </p>
+
+              <p>
+                Electric vehicles can deliver large amounts of torque
+                immediately, while combustion engines may reach peak
+                torque only within a specific engine-speed range.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Why one ranking never tells the full story</h3>
+
+              <p>
+                A vehicle can lead one category and still be less
+                suitable for a particular driver.
+              </p>
+
+              <p>
+                Performance, practicality, fuel economy, safety,
+                braking, handling, comfort, technology, dimensions
+                and intended use should all be considered together.
+              </p>
+
+              <p>
+                For example, the most powerful car may also be heavier
+                and less efficient, while a lighter vehicle with less
+                power could provide stronger handling and lower
+                running costs.
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>Use rankings as the beginning of your research</h3>
+
+              <p>
+                The leaderboard is designed to help you discover
+                vehicles worth investigating. After finding a car,
+                open its full carXdrive profile to examine engine
+                specifications, performance figures, braking,
+                dimensions, tyres, technology, safety and other
+                available data.
+              </p>
+
+              <p>
+                You can then compare up to three vehicles side by side
+                to see where each car is strongest.
+              </p>
+
+              <p>
+                <a href="cars.html">
+                  Browse the full car database →
+                </a>
+              </p>
+
+              <p>
+                <a href="index.html#compare">
+                  Compare cars side by side →
+                </a>
+              </p>
+
+            </section>
+
+
+            <section>
+
+              <h3>About the data</h3>
+
+              <p>
+                Vehicle specifications can vary by model year,
+                market, trim level and optional equipment.
+                Manufacturer figures and independent test results can
+                also differ because testing conditions are not always
+                identical.
+              </p>
+
+              <p>
+                carXdrive presents automotive information for research
+                and comparison. Important purchasing information
+                should always be confirmed with the manufacturer,
+                dealer or another authoritative source.
+              </p>
+
+            </section>
+
           </div>
 
         </section>
 
       </div>
+
     </section>
 
   </main>
 
- <footer class="site-footer">
-  <div class="footer-container">
 
-    <div class="footer-brand">
-      <a href="index.html" class="footer-logo">
-        car<span class="red-x">X</span>drive
-      </a>
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+      <div class="footer-brand">
+
+        <a href="index.html" class="footer-logo">
+          car<span class="red-x">X</span>drive
+        </a>
+
+        <p>
+          Detailed car specifications, performance results
+          and side-by-side comparisons.
+        </p>
+
+      </div>
+
+
+      <div class="footer-navigation">
+
+        <div class="footer-column">
+
+          <h2>Explore</h2>
+
+          <a href="index.html#compare">
+            Compare
+          </a>
+
+          <a href="cars.html">
+            Cars
+          </a>
+
+          <a href="tests.html">
+            Tests
+          </a>
+
+          <a href="rankings.html">
+            Rankings
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h2>Company</h2>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="contact.html">
+            Contact Us
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h2>Legal</h2>
+
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms &amp; Conditions
+          </a>
+
+          <a href="cookies.html">
+            Cookie Policy
+          </a>
+
+          <a href="disclaimer.html">
+            Disclaimer
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
 
       <p>
-        Detailed car specifications, performance results
-        and side-by-side comparisons.
+        © 2026 carXdrive. Built for detailed car research.
       </p>
-    </div>
 
-    <div class="footer-navigation">
-
-      <div class="footer-column">
-        <h2>Explore</h2>
-
-        <a href="index.html#compare">Compare</a>
-        <a href="cars.html">Cars</a>
-        <a href="tests.html">Tests</a>
-        <a href="rankings.html">Rankings</a>
-      </div>
-
-      <div class="footer-column">
-        <h2>Company</h2>
-
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-
-      <div class="footer-column">
-        <h2>Legal</h2>
-
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <a href="cookies.html">Cookie Policy</a>
-        <a href="disclaimer.html">Disclaimer</a>
-      </div>
+      <a href="#">
+        Back to top ↑
+      </a>
 
     </div>
 
-  </div>
+  </footer>
 
-  <div class="footer-bottom">
+
+  <script src="data/cars.js"></script>
+  <script src="js/rankings.js"></script>
+  <script src="js/navigation.js"></script>
+
+
+  <div
+    id="cookieConsent"
+    class="cookie-consent"
+    role="dialog"
+    aria-label="Cookie consent"
+    aria-live="polite"
+  >
+
     <p>
-      © 2026 carXdrive. Built for detailed car research.
+      carXdrive uses cookies for website functionality,
+      analytics and advertising.
+      Read our
+      <a href="cookies.html">
+        Cookie Policy
+      </a>.
     </p>
 
-    <a href="#">
-      Back to top ↑
-    </a>
+
+    <div class="cookie-consent-buttons">
+
+      <button
+        type="button"
+        id="rejectCookies"
+      >
+        Reject
+      </button>
+
+      <button
+        type="button"
+        id="acceptCookies"
+      >
+        Accept
+      </button>
+
+    </div>
+
   </div>
-</footer>
 
-<script src="data/cars.js"></script>
-<script src="js/rankings-page.js"></script>
-<script src="js/navigation.js"></script>
-<div
-  id="cookieConsent"
-  class="cookie-consent"
-  role="dialog"
-  aria-label="Cookie consent"
-  aria-live="polite"
->
-  <p>
-    carXdrive uses cookies for website functionality, analytics and advertising.
-    Read our <a href="cookies.html">Cookie Policy</a>.
-  </p>
 
-  <div class="cookie-consent-buttons">
-    <button type="button" id="rejectCookies">
-      Reject
-    </button>
-
-    <button type="button" id="acceptCookies">
-      Accept
-    </button>
-  </div>
-</div>
-
-<script src="js/cookie-consent.js"></script>
+  <script src="js/cookie-consent.js"></script>
 
 </body>
 </html>

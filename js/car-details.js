@@ -960,6 +960,242 @@ function buildCarProfileHero(car) {
   `;
 }
 
+
+function getAvailableValue(value, fallback = "not listed") {
+  return (
+    value !== undefined &&
+    value !== null &&
+    value !== ""
+  ) ? value : fallback;
+}
+
+function buildStrengthsAndConsiderations(car) {
+  const strengths = [];
+  const considerations = [];
+
+  if (typeof car.zeroToHundred === "number" && car.zeroToHundred <= 4.5) {
+    strengths.push(`Strong acceleration with a listed 0–100 km/h time of ${car.zeroToHundred} seconds.`);
+  }
+
+  if (typeof car.powerKw === "number" && typeof car.kerbWeightKg === "number") {
+    strengths.push(`A power-to-weight picture built around ${car.powerKw} kW and a ${car.kerbWeightKg.toLocaleString()} kg kerb weight.`);
+  }
+
+  if (car.drivetrain === "AWD") {
+    strengths.push("All-wheel drive is part of the specification, giving the car four driven wheels.");
+  }
+
+  if (typeof car.safetyRating === "number" && car.safetyRating >= 5) {
+    strengths.push(`A listed safety rating of ${car.safetyRating}/5.`);
+  }
+
+  if (typeof car.seatCount === "number" && car.seatCount >= 5) {
+    strengths.push(`${car.seatCount}-seat accommodation adds everyday passenger practicality.`);
+  }
+
+  if (typeof car.bootCapacityLitres === "number" && car.bootCapacityLitres >= 400) {
+    strengths.push(`A ${car.bootCapacityLitres}-litre boot provides useful cargo capacity on paper.`);
+  }
+
+  if (
+    typeof car.combinedFuelConsumption === "number" &&
+    car.combinedFuelConsumption <= 7.5
+  ) {
+    strengths.push(`Listed combined fuel consumption of ${car.combinedFuelConsumption} L/100 km is one of the more efficiency-focused figures in its specification.`);
+  }
+
+  if (
+    String(car.appleCarPlay || "").toLowerCase().includes("wireless") ||
+    String(car.androidAuto || "").toLowerCase().includes("wireless")
+  ) {
+    strengths.push("Wireless smartphone integration is included in the listed technology equipment.");
+  }
+
+  if (typeof car.combinedFuelConsumption === "number" && car.combinedFuelConsumption >= 10) {
+    considerations.push(`Combined fuel consumption is listed at ${car.combinedFuelConsumption} L/100 km, so fuel use is an important ownership consideration.`);
+  }
+
+  if (typeof car.kerbWeightKg === "number" && car.kerbWeightKg >= 2000) {
+    considerations.push(`A kerb weight of ${car.kerbWeightKg.toLocaleString()} kg makes this a relatively heavy vehicle.`);
+  }
+
+  if (typeof car.seatCount === "number" && car.seatCount <= 2) {
+    considerations.push(`The ${car.seatCount}-seat layout limits passenger flexibility compared with four- or five-seat alternatives.`);
+  }
+
+  if (typeof car.bootCapacityLitres === "number" && car.bootCapacityLitres < 300) {
+    considerations.push(`Boot capacity is listed at ${car.bootCapacityLitres} litres, which may matter to buyers who regularly carry luggage.`);
+  }
+
+  if (
+    car.safetyRating === undefined ||
+    car.safetyRating === null ||
+    car.safetyRating === ""
+  ) {
+    considerations.push("A safety rating is not currently listed in the carXdrive database for this exact variant.");
+  }
+
+  if (!strengths.length) {
+    strengths.push("Its main strengths are best understood by comparing the detailed engine, performance, chassis and equipment data below.");
+  }
+
+  if (!considerations.length) {
+    considerations.push("As with any vehicle, specification, market, tyres and optional equipment can change the real-world experience.");
+  }
+
+  const strengthItems = strengths
+    .slice(0, 4)
+    .map(item => `<li>${item}</li>`)
+    .join("");
+
+  const considerationItems = considerations
+    .slice(0, 4)
+    .map(item => `<li>${item}</li>`)
+    .join("");
+
+  return `
+    <section class="car-specification-section car-editorial-section">
+      <h2>Strengths and things to consider</h2>
+
+      <div class="car-editorial-columns">
+        <div class="car-editorial-column">
+          <h3>Strengths</h3>
+          <ul>${strengthItems}</ul>
+        </div>
+
+        <div class="car-editorial-column">
+          <h3>Things to consider</h3>
+          <ul>${considerationItems}</ul>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function buildEditorialInsights(car) {
+  const carName = getCarDisplayName(car) || "This vehicle";
+  const engine = getAvailableValue(car.engine);
+  const power = typeof car.powerKw === "number" ? `${car.powerKw} kW` : "power not listed";
+  const torque = typeof car.torqueNm === "number" ? `${car.torqueNm} Nm` : "torque not listed";
+  const drivetrain = getAvailableValue(car.drivetrain);
+  const transmission = getAvailableValue(car.transmission);
+
+  const accelerationText =
+    typeof car.zeroToHundred === "number"
+      ? `The listed 0–100 km/h time is ${car.zeroToHundred} seconds`
+      : "A 0–100 km/h figure is not currently listed";
+
+  const topSpeedText =
+    typeof car.topSpeedKmh === "number"
+      ? `and top speed is ${car.topSpeedKmh} km/h`
+      : "and a top-speed figure is not currently listed";
+
+  const weightText =
+    typeof car.kerbWeightKg === "number"
+      ? `${car.kerbWeightKg.toLocaleString()} kg`
+      : "not currently listed";
+
+  const fuelText =
+    typeof car.combinedFuelConsumption === "number"
+      ? `${car.combinedFuelConsumption} L/100 km`
+      : "not currently listed";
+
+  const seatText =
+    typeof car.seatCount === "number"
+      ? `${car.seatCount} seats`
+      : "seat count not listed";
+
+  const bootText =
+    typeof car.bootCapacityLitres === "number"
+      ? `${car.bootCapacityLitres} litres`
+      : "not currently listed";
+
+  const safetyText =
+    typeof car.safetyRating === "number"
+      ? `${car.safetyRating}/5`
+      : "not currently listed";
+
+  const performanceVerdict =
+    typeof car.zeroToHundred === "number" && car.zeroToHundred <= 4
+      ? "Its specification clearly places straight-line performance near the centre of the package."
+      : typeof car.zeroToHundred === "number" && car.zeroToHundred <= 6
+        ? "Its acceleration figures point to a strong performance focus without relying on one headline number alone."
+        : "Its overall character is better judged from the complete mix of performance, practicality and efficiency data.";
+
+  return `
+    <div class="car-editorial-content">
+
+      <section class="car-specification-section car-editorial-section">
+        <h2>carXdrive overview</h2>
+        <p>
+          The ${car.year || ""} ${carName} combines a ${engine} with ${power} and
+          ${torque}. Power is sent through ${drivetrain} using a ${transmission}.
+          This page brings its performance, chassis, fuel, safety, technology
+          and practicality data together so the car can be judged as a complete
+          package rather than by one specification alone.
+        </p>
+      </section>
+
+      <section class="car-specification-section car-editorial-section">
+        <h2>Performance analysis</h2>
+        <p>
+          ${accelerationText} ${topSpeedText}. Kerb weight is ${weightText}.
+          ${performanceVerdict}
+          Where independent or reference test figures are available below,
+          they should be read alongside the stated test conditions because
+          tyres, surface, temperature and measurement method can affect results.
+        </p>
+      </section>
+
+      <section class="car-specification-section car-editorial-section">
+        <h2>Everyday usability</h2>
+        <p>
+          The database lists ${seatText}, a boot capacity of ${bootText}, and
+          combined fuel consumption of ${fuelText}. The listed safety rating is
+          ${safetyText}. Buyers should also check the exact regional specification,
+          because equipment and ratings can differ by model year, trim and market.
+        </p>
+      </section>
+
+      ${buildStrengthsAndConsiderations(car)}
+
+      <section class="car-specification-section car-editorial-section">
+        <h2>carXdrive verdict</h2>
+        <p>
+          The ${carName} should be assessed by balancing its ${power} output,
+          ${torque} of torque, ${drivetrain} layout, ${weightText} kerb weight
+          and the practicality and technology details shown on this page.
+          The strongest comparison comes from placing it beside direct rivals
+          in carXdrive rather than choosing a winner from power or acceleration alone.
+        </p>
+        <p>
+          <a href="index.html#compare">Compare this car with another vehicle →</a>
+        </p>
+      </section>
+
+    </div>
+  `;
+}
+
+function updateCarMetaDescription(car) {
+  const description =
+    `${car.year || ""} ${getCarDisplayName(car)}: ${getAvailableValue(car.engine)}, ` +
+    `${typeof car.powerKw === "number" ? car.powerKw + " kW" : "detailed power data"}, ` +
+    `${typeof car.zeroToHundred === "number" ? "0–100 km/h in " + car.zeroToHundred + " s" : "performance data"}, ` +
+    `plus specifications, safety, fuel economy and carXdrive analysis.`;
+
+  let metaDescription = document.querySelector('meta[name="description"]');
+
+  if (!metaDescription) {
+    metaDescription = document.createElement("meta");
+    metaDescription.setAttribute("name", "description");
+    document.head.appendChild(metaDescription);
+  }
+
+  metaDescription.setAttribute("content", description);
+}
+
+
 function renderCarSpecifications(car) {
   if (!carSpecifications) {
     return;
@@ -976,6 +1212,8 @@ function renderCarSpecifications(car) {
 
   carSpecifications.innerHTML = `
     ${buildCarProfileHero(car)}
+
+    ${buildEditorialInsights(car)}
 
     <div class="car-specification-sections">
       ${sections}
@@ -1041,10 +1279,11 @@ function loadCarDetails() {
   }
 
   document.title =
-    `${carName} Specifications | carXdrive`;
+    `${carName} Specifications & Review | carXdrive`;
 
+  updateCarMetaDescription(selectedCar);
   renderSectionNavigation(selectedCar);
-renderCarSpecifications(selectedCar);
+  renderCarSpecifications(selectedCar);
 }
 
 
