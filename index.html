@@ -496,6 +496,14 @@
 
   </main>
 
+  <!-- BidVertiser native ad: loads only after cookie consent -->
+  <section class="cars-native-ad-section" aria-label="Sponsored content">
+    <div class="about-container">
+      <p class="about-section-eyebrow">Sponsored</p>
+      <div id="ntv_2106507"></div>
+    </div>
+  </section>
+
   <!-- Permanent research content for users and search engines -->
   <section class="about-content carxdrive-home-guide" aria-labelledby="homeResearchTitle">
     <div class="about-container">
@@ -757,5 +765,67 @@
 </div>
 
 <script src="js/cookie-consent.js"></script>
+
+<script>
+(function () {
+  const STORAGE_KEY = "carxdrive-cookie-consent";
+  let bidvertiserLoaded = false;
+
+  function loadBidVertiserNativeAd() {
+    if (bidvertiserLoaded) {
+      return;
+    }
+
+    const container = document.getElementById("ntv_2106507");
+
+    if (!container) {
+      return;
+    }
+
+    bidvertiserLoaded = true;
+
+    const params = {
+      bvwidgetid: "ntv_2106507",
+      bvlinksownid: 2106507,
+      rows: 1,
+      cols: 1,
+      textpos: "below",
+      imagewidth: 150,
+      mobilecols: 1,
+      cb: new Date().getTime()
+    };
+
+    params.bvwidgetid = "ntv_2106507" + params.cb;
+    container.id = params.bvwidgetid;
+
+    const queryString = Object.keys(params)
+      .map(function (key) {
+        return key + "=" + encodeURIComponent(params[key]);
+      })
+      .join("&");
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src =
+      "https://cdn.hyperpromote.com/bidvertiser/tags/active/bdvws.js?" +
+      queryString;
+
+    document.getElementById(params.bvwidgetid).appendChild(script);
+  }
+
+  if (localStorage.getItem(STORAGE_KEY) === "accepted") {
+    loadBidVertiserNativeAd();
+  }
+
+  const acceptButton = document.getElementById("acceptCookies");
+
+  if (acceptButton) {
+    acceptButton.addEventListener("click", function () {
+      loadBidVertiserNativeAd();
+    });
+  }
+})();
+</script>
 </body>
 </html>
