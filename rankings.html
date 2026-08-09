@@ -61,6 +61,69 @@
     rel="stylesheet"
     href="css/style.css"
   >
+
+  <style>
+    .rankings-explainer {
+      margin-top: 32px;
+    }
+
+    .rankings-explainer .rankings-heading-row {
+      margin-bottom: 24px;
+    }
+
+    .rankings-explainer-content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .rankings-explainer-content > section {
+      background: linear-gradient(180deg, rgba(18, 30, 47, 0.96), rgba(10, 18, 29, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    .rankings-explainer-content > section h3 {
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-size: 1.12rem;
+      line-height: 1.35;
+    }
+
+    .rankings-explainer-content > section p {
+      margin: 0 0 12px;
+      color: #b9c3d1;
+      line-height: 1.75;
+    }
+
+    .rankings-explainer-content > section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .rankings-explainer-content > section a {
+      color: #ff4050;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .rankings-explainer-content > section a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 800px) {
+      .rankings-explainer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .rankings-explainer-content > section {
+        padding: 20px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+
 </head>
 
 <body class="rankings-page-body">
