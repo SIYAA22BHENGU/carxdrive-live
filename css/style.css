@@ -8817,3 +8817,23 @@ input::placeholder {
     padding: 18px;
   }
 }
+/* Developer credit */
+.developer-credit {
+  margin: 8px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #7f8a99;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.developer-credit a {
+  color: #9aa5b3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.developer-credit a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
